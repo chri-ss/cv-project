@@ -5,7 +5,6 @@ class General extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.info);
     const { name, city, email, phone } = this.props.info;
     return (
       <div class="general">
