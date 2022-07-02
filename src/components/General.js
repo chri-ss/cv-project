@@ -5,10 +5,9 @@ class General extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.info);
     const { name, city, email, phone } = this.props.info;
     return (
-      <div class="general">
+      <div className="general">
         <h1 className="name">{name}</h1>
         <p className="city">{city}</p>
         <div className="contact">
