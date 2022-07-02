@@ -11,8 +11,11 @@ class General extends Component {
       <div class="general">
         <h1 className="name">{name}</h1>
         <p className="city">{city}</p>
-        <p className="email">{email}</p>
-        <p className="p">{phone}</p>
+        <div className="contact">
+          {" "}
+          <p className="email">{email}</p>
+          <p className="p">{phone}</p>
+        </div>
       </div>
     );
   }
