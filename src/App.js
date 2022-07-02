@@ -13,7 +13,11 @@ class App extends Component {
       city: "New Westminster, BC, Canada",
       email: "yes@gmail.com",
       phone: "123-456-7890",
-      schools: ["some school", "another school", "a third school"],
+      schools: [
+        { name: "some school", range: "date - date" },
+        { name: "some school", range: "date - date" },
+        { name: "some school", range: "date - date" },
+      ],
     };
   }
 

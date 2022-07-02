@@ -4,6 +4,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  box-sizing: border-box;
 }
 
 .general {
@@ -13,7 +14,8 @@ body {
   border: 1px solid black;
 }
 
-.general > * {
+.general,
+.education > * {
   padding: 1rem;
 }
 
@@ -25,4 +27,28 @@ body {
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+ul > li {
+  padding: 0.5rem;
+  padding-left: 3rem;
 }
