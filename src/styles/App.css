@@ -38,7 +38,8 @@ body {
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 36px;
+  font-weight: bold;
 }
 
 ul {
@@ -46,9 +47,24 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: start;
+  gap: 0.5rem;
 }
 
-ul > li {
+ul > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.school {
+  font-size: 24px;
+  font-weight: bold;
   padding: 0.5rem;
-  padding-left: 3rem;
+  padding-left: 1rem;
+}
+
+.range {
+  align-self: flex-end;
+  padding-right: 3rem;
 }
