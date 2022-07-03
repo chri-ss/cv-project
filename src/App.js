@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       name: "Someone Person",
-      city: "New Westminster, BC, Canada",
+      city: "location",
       email: "yes@gmail.com",
       phone: "123-456-7890",
       schools: [
@@ -20,18 +20,6 @@ class App extends Component {
         { name: "some school", range: "date - date" },
       ],
       companies: [
-        {
-          name: "cracker factory",
-          title: "middle manager",
-          range: "date - date",
-          duties: ["salting", "managing", "getting fired"],
-        },
-        {
-          name: "cracker factory",
-          title: "middle manager",
-          range: "date - date",
-          duties: ["salting", "managing", "getting fired"],
-        },
         {
           name: "cracker factory",
           title: "middle manager",

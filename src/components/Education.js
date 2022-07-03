@@ -15,13 +15,9 @@ class Education extends Component {
         <ul>
           {schools.map((school) => {
             return (
-              <li key={uniqid()}>
+              <li key={uniqid()} className="school-and-range">
                 <div className="school">≫ {school.name}</div>
-                <div>
-                  {" "}
-                  className="range">
-                  {school.range}
-                </div>
+                <div className="range">{school.range}</div>
               </li>
             );
           })}

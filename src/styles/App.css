@@ -3,15 +3,25 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
+  padding: 5rem;
   box-sizing: border-box;
 }
 
-.general {
+#root {
+  width: 50%;
+}
+
+.general,
+.education,
+.experience {
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   border: 1px solid black;
+  padding: 1rem;
 }
 
 .general,
@@ -29,32 +39,40 @@ body {
   gap: 1rem;
 }
 
-.education {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
+h1,
+h2 {
+  padding: 1rem;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 h2 {
   font-size: 36px;
-  font-weight: bold;
 }
 
 ul {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: start;
   gap: 0.5rem;
 }
-
+/* 
 ul > li {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  gap: 0.5rem;
+} */
+
+.school-and-range {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+}
+
+.name-and-title {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .school {
@@ -65,6 +83,17 @@ ul > li {
 }
 
 .range {
-  align-self: flex-end;
+  align-self: center;
   padding-right: 3rem;
+}
+
+.experience-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.experience-points {
+  align-items: flex-start;
+  padding-left: 4rem;
 }

@@ -9,18 +9,17 @@ class Experience extends Component {
   render() {
     const { companies } = this.props;
     return (
-      <div>
+      <div className="experience">
         <h2>Experience</h2>
         <ul>
           {companies.map((company) => {
             return (
-              <li key={uniqid()}>
-                <div>
-                  <div>{company.name}</div>
-                  <div>{company.title}</div>
+              <li key={uniqid()} className="experience-list-item">
+                <div className="name-and-title">
+                  <div>{company.name}</div> - <div>{company.title}</div>
                 </div>
                 <div>{company.range}</div>
-                <ul>
+                <ul className="experience-points">
                   {company.duties.map((duty) => {
                     return <li>{duty}</li>;
                   })}
