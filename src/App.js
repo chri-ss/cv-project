@@ -33,10 +33,15 @@ class App extends Component {
     };
   }
 
+  editGeneralInfo = () => {
+    this.setState({ general: { editable: true } });
+    console.log(this.state.general);
+  };
+
   render() {
     return (
       <div>
-        <General info={this.state}></General>
+        <General info={this.state} editInfo={this.editGeneralInfo}></General>
         <Education schools={this.state.schools} />
         <Experience companies={this.state.companies} />
       </div>

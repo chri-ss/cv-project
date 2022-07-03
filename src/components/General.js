@@ -22,7 +22,12 @@ class General extends Component {
           <p className="email">{email}</p>
           <p className="p">{phone}</p>
         </div>
-        <FontAwesomeIcon icon={faPenToSquare} size="2x" className="edit-icon" />
+        <FontAwesomeIcon
+          icon={faPenToSquare}
+          size="2x"
+          className="edit-icon"
+          onClick={this.props.editInfo}
+        />
       </div>
     );
   }
