@@ -97,3 +97,17 @@ ul > li {
   align-items: flex-start;
   padding-left: 4rem;
 }
+
+button {
+  border: none;
+}
+
+.edit-icon:hover,
+.submit-icon:hover {
+  color: slateblue;
+}
+
+.general-form {
+  display: flex;
+  flex-direction: column;
+}

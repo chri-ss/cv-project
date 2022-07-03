@@ -10,10 +10,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-      name: "Someone Person",
-      city: "location",
-      email: "yes@gmail.com",
-      phone: "123-456-7890",
+      general: {
+        name: "Someone Person",
+        city: "location",
+        email: "yes@gmail.com",
+        phone: "123-456-7890",
+        editable: false,
+      },
       schools: [
         { name: "some school", range: "date - date" },
         { name: "some school", range: "date - date" },
