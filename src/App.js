@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import General from "./components/General";
 import Education from "./components/Education";
+import Experience from "./components/Experience";
 import "./styles/reset.css";
 import "./styles/App.css";
 
@@ -10,13 +11,21 @@ class App extends Component {
 
     this.state = {
       name: "Someone Person",
-      city: "New Westminster, BC, Canada",
+      city: "location",
       email: "yes@gmail.com",
       phone: "123-456-7890",
       schools: [
         { name: "some school", range: "date - date" },
         { name: "some school", range: "date - date" },
         { name: "some school", range: "date - date" },
+      ],
+      companies: [
+        {
+          name: "cracker factory",
+          title: "middle manager",
+          range: "date - date",
+          duties: ["salting", "managing", "getting fired"],
+        },
       ],
     };
   }
@@ -26,6 +35,7 @@ class App extends Component {
       <div>
         <General info={this.state}></General>
         <Education schools={this.state.schools} />
+        <Experience companies={this.state.companies} />
       </div>
     );
   }
