@@ -8,7 +8,6 @@ class Education extends Component {
 
   render() {
     const { schools } = this.props;
-    console.log(schools);
     return (
       <div className="education">
         <h2>Education</h2>
