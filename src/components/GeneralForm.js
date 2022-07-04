@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,24 +8,48 @@ class GeneralForm extends Component {
   }
 
   render() {
+    const { name, city, email, phone } = this.props.info;
+    const { handleSubmit, handleChange } = this.props;
     return (
       <fieldset className="general">
         {" "}
-        <form className="general-form">
+        <form className="general-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name"></input>
-          <label htmlFor="location">Location</label>
-          <input type="text" id="location"></input>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="city">Location</label>
+          <input
+            type="text"
+            id="city"
+            value={city}
+            onChange={handleChange}
+          ></input>
           <label htmlFor="email">Email</label>
-          <input type="email" id="email"></input>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={handleChange}
+          ></input>
           <label htmlFor="phone">Phone</label>
-          <input type="phone" id="phone"></input>
+          <input
+            type="phone"
+            id="phone"
+            value={phone}
+            onChange={handleChange}
+          ></input>
+          <button type="submit">
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              size="2x"
+              className="submit-icon"
+            />
+          </button>
         </form>
-        <FontAwesomeIcon
-          icon={faCircleCheck}
-          size="2x"
-          className="submit-icon"
-        />
       </fieldset>
     );
   }

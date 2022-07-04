@@ -34,14 +34,35 @@ class App extends Component {
   }
 
   editGeneralInfo = () => {
-    this.setState({ general: { editable: true } });
+    const current = this.state.general;
+    this.setState({ general: { ...current, editable: true } });
+  };
+
+  handleGeneralSubmit = (e) => {
+    e.preventDefault();
+    const current = this.state.general;
+    this.setState({ general: { ...current, editable: false } });
     console.log(this.state.general);
+  };
+
+  handleGeneralChange = (e) => {
+    console.log(e.target);
+    const id = e.target.id;
+    const current = this.state.general;
+    this.setState({
+      general: { ...current, [id]: e.target.value },
+    });
   };
 
   render() {
     return (
       <div>
-        <General info={this.state} editInfo={this.editGeneralInfo}></General>
+        <General
+          info={this.state}
+          editInfo={this.editGeneralInfo}
+          handleGeneralSubmit={this.handleGeneralSubmit}
+          handleGeneralChange={this.handleGeneralChange}
+        ></General>
         <Education schools={this.state.schools} />
         <Experience companies={this.state.companies} />
       </div>
