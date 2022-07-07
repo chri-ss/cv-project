@@ -18,9 +18,9 @@ class App extends Component {
         editable: false,
       },
       schools: [
-        { name: "some school", range: "date - date" },
-        { name: "some school", range: "date - date" },
-        { name: "some school", range: "date - date" },
+        { name: "some school", range: "date - date", editable: false },
+        { name: "some school", range: "date - date", editable: false },
+        { name: "some school", range: "date - date", editable: false },
       ],
       companies: [
         {
@@ -54,6 +54,18 @@ class App extends Component {
     });
   };
 
+  editSchoolInfo = (e) => {
+    this.setState({
+      schools: this.state.schools.map((school) => {
+        if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
+          return { ...school, editable: true };
+        } else {
+          return { ...school, editable: false };
+        }
+      }),
+    });
+  };
+
   render() {
     return (
       <div>
@@ -63,7 +75,10 @@ class App extends Component {
           handleGeneralSubmit={this.handleGeneralSubmit}
           handleGeneralChange={this.handleGeneralChange}
         ></General>
-        <Education schools={this.state.schools} />
+        <Education
+          schools={this.state.schools}
+          editInfo={this.editSchoolInfo}
+        />
         <Experience companies={this.state.companies} />
       </div>
     );
