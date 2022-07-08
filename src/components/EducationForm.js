@@ -8,13 +8,28 @@ class EducationForm extends Component {
   }
 
   render() {
-    const { name, range, editable } = this.props.school;
+    const { institution, range } = this.props.school;
+    const { id } = this.props;
+    const { handleSubmit, handleChange } = this.props;
     return (
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="school">School</label>
-        <input type="text" id="school" value={name}></input>
+        <input
+          type="text"
+          name="institution"
+          id={id}
+          value={institution}
+          onChange={handleChange}
+        ></input>
         <label htmlFor="range">Dates</label>
-        <input type="text" id="range" value={range}></input>
+        <input
+          type="text"
+          name="range"
+          id={id}
+          value={range}
+          onChange={handleChange}
+        ></input>
+        <button type="submit">submit</button>
       </form>
     );
   }

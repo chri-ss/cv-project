@@ -11,6 +11,7 @@ class Education extends Component {
 
   render() {
     const { schools } = this.props;
+    const { handleSchoolChange, handleSchoolSubmit } = this.props;
     return (
       <div className="education">
         <h2>Education</h2>
@@ -18,10 +19,15 @@ class Education extends Component {
           {schools.map((school) => {
             const index = schools.indexOf(school);
             return school.editable ? (
-              <EducationForm school={school} />
+              <EducationForm
+                school={school}
+                id={index}
+                handleChange={handleSchoolChange}
+                handleSubmit={handleSchoolSubmit}
+              />
             ) : (
               <li key={uniqid()} className="school-and-range">
-                <div className="school">≫ {school.name}</div>
+                <div className="school">≫ {school.institution}</div>
                 <div className="range">{school.range}</div>
                 <button
                   id={index}

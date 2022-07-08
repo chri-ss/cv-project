@@ -18,9 +18,9 @@ class App extends Component {
         editable: false,
       },
       schools: [
-        { name: "some school", range: "date - date", editable: false },
-        { name: "some school", range: "date - date", editable: false },
-        { name: "some school", range: "date - date", editable: false },
+        { institution: "some school", range: "date - date", editable: false },
+        { institution: "some school", range: "date - date", editable: false },
+        { institution: "some school", range: "date - date", editable: false },
       ],
       companies: [
         {
@@ -46,7 +46,6 @@ class App extends Component {
   };
 
   handleGeneralChange = (e) => {
-    console.log(e.target);
     const id = e.target.id;
     const current = this.state.general;
     this.setState({
@@ -66,6 +65,35 @@ class App extends Component {
     });
   };
 
+  handleSchoolSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    this.setState({
+      schools: this.state.schools.map((school) => {
+        if (school.editable) {
+          return { ...school, editable: false };
+        } else {
+          return { ...school };
+        }
+      }),
+    });
+  };
+
+  handleSchoolChange = (e) => {
+    const name = e.target.name;
+    console.log(e.target.value);
+    this.setState({
+      schools: this.state.schools.map((school) => {
+        if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
+          return { ...school, [name]: e.target.value };
+        } else {
+          return { ...school };
+        }
+      }),
+    });
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div>
@@ -78,6 +106,8 @@ class App extends Component {
         <Education
           schools={this.state.schools}
           editInfo={this.editSchoolInfo}
+          handleSchoolChange={this.handleSchoolChange}
+          handleSchoolSubmit={this.handleSchoolSubmit}
         />
         <Experience companies={this.state.companies} />
       </div>
