@@ -10,8 +10,9 @@ class Education extends Component {
   }
 
   render() {
-    const { schools } = this.props;
-    const { handleSchoolChange, handleSchoolSubmit } = this.props;
+    const { schools, addingSchool } = this.props;
+    const { handleSchoolChange, handleSchoolSubmit, addSchoolForm } =
+      this.props;
     return (
       <div className="education">
         <h2>Education</h2>
@@ -41,7 +42,14 @@ class Education extends Component {
             );
           })}
         </ul>
-        <FontAwesomeIcon icon={faPlus} size="2x" className="add-icon" />
+        {!addingSchool ? (
+          <FontAwesomeIcon
+            icon={faPlus}
+            size="2x"
+            className="add-icon"
+            onClick={addSchoolForm}
+          />
+        ) : null}
       </div>
     );
   }

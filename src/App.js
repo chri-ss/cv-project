@@ -30,6 +30,7 @@ class App extends Component {
           duties: ["salting", "managing", "getting fired"],
         },
       ],
+      addingSchool: false,
     };
   }
 
@@ -76,6 +77,7 @@ class App extends Component {
           return { ...school };
         }
       }),
+      addingSchool: false,
     });
   };
 
@@ -94,6 +96,17 @@ class App extends Component {
     console.log(this.state);
   };
 
+  addSchoolForm = () => {
+    this.setState({
+      addingSchool: true,
+      schools: [
+        ...this.state.schools,
+        { institution: "", range: "", editable: true },
+      ],
+    });
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div>
@@ -105,9 +118,11 @@ class App extends Component {
         ></General>
         <Education
           schools={this.state.schools}
+          addingSchool={this.state.addingSchool}
           editInfo={this.editSchoolInfo}
           handleSchoolChange={this.handleSchoolChange}
           handleSchoolSubmit={this.handleSchoolSubmit}
+          addSchoolForm={this.addSchoolForm}
         />
         <Experience companies={this.state.companies} />
       </div>
