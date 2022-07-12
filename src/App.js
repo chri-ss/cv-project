@@ -56,14 +56,24 @@ class App extends Component {
 
   editSchoolInfo = (e) => {
     this.setState({
-      schools: this.state.schools.map((school) => {
-        if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
-          return { ...school, editable: true };
-        } else {
-          return { ...school, editable: false };
-        }
-      }),
+      schools: this.state.schools
+        .filter((school) => {
+          if (this.state.addingSchool) {
+            return school !== this.state.schools[this.state.schools.length - 1];
+          } else {
+            return school;
+          }
+        })
+        .map((school) => {
+          if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
+            return { ...school, editable: true };
+          } else {
+            return { ...school, editable: false };
+          }
+        }),
+      addingSchool: false,
     });
+    console.log(this.state);
   };
 
   handleSchoolSubmit = (e) => {
@@ -100,7 +110,9 @@ class App extends Component {
     this.setState({
       addingSchool: true,
       schools: [
-        ...this.state.schools,
+        ...this.state.schools.map((school) => {
+          return { ...school, editable: false };
+        }),
         { institution: "", range: "", editable: true },
       ],
     });
