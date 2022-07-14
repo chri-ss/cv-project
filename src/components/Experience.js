@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
+import ExperienceForm from "./ExperienceForm";
 import uniqid from "uniqid";
 
 class Experience extends Component {
@@ -28,6 +31,7 @@ class Experience extends Component {
             );
           })}
         </ul>
+        <FontAwesomeIcon icon={faPlus} size="2x" className="add-icon" />
       </div>
     );
   }

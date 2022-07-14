@@ -113,7 +113,8 @@ button {
   border-radius: 50%;
 }
 
-.general-form {
+.general-form,
+.experience-form {
   display: flex;
   flex-direction: column;
 }
