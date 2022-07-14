@@ -64,7 +64,8 @@ ul > li {
 .school-and-range {
   display: flex;
   justify-content: center;
-  gap: 10%;
+  align-items: center;
+  gap: 5%;
 }
 
 .name-and-title {
@@ -84,7 +85,7 @@ ul > li {
 
 .range {
   align-self: center;
-  padding-right: 3rem;
+  padding-right: 1rem;
 }
 
 .experience-list-item {
@@ -99,7 +100,8 @@ ul > li {
 }
 
 .edit-icon:hover,
-.submit-icon:hover {
+.submit-icon:hover,
+.add-icon:hover {
   color: slateblue;
 }
 

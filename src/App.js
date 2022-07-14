@@ -18,9 +18,9 @@ class App extends Component {
         editable: false,
       },
       schools: [
-        { name: "some school", range: "date - date" },
-        { name: "some school", range: "date - date" },
-        { name: "some school", range: "date - date" },
+        { institution: "some school", range: "date - date", editable: false },
+        { institution: "some school", range: "date - date", editable: false },
+        { institution: "some school", range: "date - date", editable: false },
       ],
       companies: [
         {
@@ -30,6 +30,7 @@ class App extends Component {
           duties: ["salting", "managing", "getting fired"],
         },
       ],
+      addingSchool: false,
     };
   }
 
@@ -46,11 +47,84 @@ class App extends Component {
   };
 
   handleGeneralChange = (e) => {
-    console.log(e.target);
     const id = e.target.id;
     const current = this.state.general;
     this.setState({
       general: { ...current, [id]: e.target.value },
+    });
+  };
+
+  editSchoolInfo = (e) => {
+    this.setState({
+      schools: this.state.schools
+        .filter((school) => {
+          if (this.state.addingSchool) {
+            return school !== this.state.schools[this.state.schools.length - 1];
+          } else {
+            return school;
+          }
+        })
+        .map((school) => {
+          if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
+            return { ...school, editable: true };
+          } else {
+            return { ...school, editable: false };
+          }
+        }),
+      addingSchool: false,
+    });
+    console.log(this.state);
+  };
+
+  handleSchoolSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    this.setState({
+      schools: this.state.schools.map((school) => {
+        if (school.editable) {
+          return { ...school, editable: false };
+        } else {
+          return { ...school };
+        }
+      }),
+      addingSchool: false,
+    });
+  };
+
+  handleSchoolChange = (e) => {
+    const name = e.target.name;
+    console.log(e.target.value);
+    this.setState({
+      schools: this.state.schools.map((school) => {
+        if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
+          return { ...school, [name]: e.target.value };
+        } else {
+          return { ...school };
+        }
+      }),
+    });
+    console.log(this.state);
+  };
+
+  addSchoolForm = () => {
+    this.setState({
+      addingSchool: true,
+      schools: [
+        ...this.state.schools.map((school) => {
+          return { ...school, editable: false };
+        }),
+        { institution: "", range: "", editable: true },
+      ],
+    });
+    console.log(this.state);
+  };
+
+  deleteSchool = (e) => {
+    console.log(e.target);
+    this.setState({
+      schools: this.state.schools.filter(
+        (school) => school !== this.state.schools[parseInt(e.target.id)]
+      ),
     });
   };
 
@@ -63,7 +137,15 @@ class App extends Component {
           handleGeneralSubmit={this.handleGeneralSubmit}
           handleGeneralChange={this.handleGeneralChange}
         ></General>
-        <Education schools={this.state.schools} />
+        <Education
+          schools={this.state.schools}
+          addingSchool={this.state.addingSchool}
+          editInfo={this.editSchoolInfo}
+          handleSchoolChange={this.handleSchoolChange}
+          handleSchoolSubmit={this.handleSchoolSubmit}
+          addSchoolForm={this.addSchoolForm}
+          deleteSchool={this.deleteSchool}
+        />
         <Experience companies={this.state.companies} />
       </div>
     );
