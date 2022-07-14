@@ -10,9 +10,15 @@ class Education extends Component {
   }
 
   render() {
-    const { schools, addingSchool } = this.props;
-    const { handleSchoolChange, handleSchoolSubmit, addSchoolForm } =
-      this.props;
+    const {
+      schools,
+      addingSchool,
+      handleSchoolChange,
+      handleSchoolSubmit,
+      addSchoolForm,
+      editInfo,
+      deleteSchool,
+    } = this.props;
     return (
       <div className="education">
         <h2>Education</h2>
@@ -34,9 +40,16 @@ class Education extends Component {
                   id={index}
                   icon={faPenToSquare}
                   className="edit-icon"
-                  onClick={this.props.editInfo}
+                  onClick={editInfo}
                 >
-                  Y
+                  E
+                </button>
+                <button
+                  id={index}
+                  className="delete-icon"
+                  onClick={deleteSchool}
+                >
+                  D
                 </button>
               </li>
             );

@@ -119,6 +119,15 @@ class App extends Component {
     console.log(this.state);
   };
 
+  deleteSchool = (e) => {
+    console.log(e.target);
+    this.setState({
+      schools: this.state.schools.filter(
+        (school) => school !== this.state.schools[parseInt(e.target.id)]
+      ),
+    });
+  };
+
   render() {
     return (
       <div>
@@ -135,6 +144,7 @@ class App extends Component {
           handleSchoolChange={this.handleSchoolChange}
           handleSchoolSubmit={this.handleSchoolSubmit}
           addSchoolForm={this.addSchoolForm}
+          deleteSchool={this.deleteSchool}
         />
         <Experience companies={this.state.companies} />
       </div>
