@@ -28,9 +28,11 @@ class App extends Component {
           title: "middle manager",
           range: "date - date",
           duties: ["salting", "managing", "getting fired"],
+          editable: false,
         },
       ],
       addingSchool: false,
+      addingExperience: false,
     };
   }
 
@@ -128,6 +130,18 @@ class App extends Component {
     });
   };
 
+  editExperienceInfo = (e) => {
+    this.setState({
+      companies: this.state.companies.map((company) => {
+        if (this.state.companies.indexOf(company) === parseInt(e.target.id)) {
+          return { ...company, editable: true };
+        } else {
+          return { ...company, editable: false };
+        }
+      }),
+    });
+  };
+
   render() {
     return (
       <div>
@@ -146,7 +160,11 @@ class App extends Component {
           addSchoolForm={this.addSchoolForm}
           deleteSchool={this.deleteSchool}
         />
-        <Experience companies={this.state.companies} />
+        <Experience
+          companies={this.state.companies}
+          addingExperience={this.addingExperience}
+          editInfo={this.editExperienceInfo}
+        />
       </div>
     );
   }

@@ -9,17 +9,19 @@ class ExperienceForm extends Component {
 
   render() {
     return (
-      <form className="experience-form">
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name"></input>
-        <label htmlFor="title">Title</label>
-        <input type="text" id="title"></input>
-        <label htmlFor="range">Range</label>
-        <input type="text" id="range"></input>
-        <label htmlFor="duties">Duties</label>
-        <input type="text" id="duties"></input>
-        <FontAwesomeIcon icon={faPlus} />
-      </form>
+      <fieldset className="experience">
+        <form className="experience-form">
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name"></input>
+          <label htmlFor="title">Title</label>
+          <input type="text" id="title"></input>
+          <label htmlFor="range">Range</label>
+          <input type="text" id="range"></input>
+          <label htmlFor="duties">Duties</label>
+          <input type="text" id="duties"></input>
+          <FontAwesomeIcon icon={faPlus} />
+        </form>
+      </fieldset>
     );
   }
 }
