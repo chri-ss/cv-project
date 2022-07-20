@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class ExperienceForm extends Component {
   constructor(props) {
@@ -8,18 +8,57 @@ class ExperienceForm extends Component {
   }
 
   render() {
+    const { name, title, range, duties } = this.props.company;
+    const { index } = this.props;
+    const { handlechange, handlesubmit } = this.props;
     return (
       <fieldset className="experience">
-        <form className="experience-form">
+        <form className="experience-form" onSubmit={handlesubmit}>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name"></input>
+          <input
+            id="name"
+            type="text"
+            index={index}
+            value={name}
+            onChange={handlechange}
+          ></input>
           <label htmlFor="title">Title</label>
-          <input type="text" id="title"></input>
+          <input
+            id="title"
+            type="text"
+            index={index}
+            value={title}
+            onChange={handlechange}
+          ></input>
           <label htmlFor="range">Range</label>
-          <input type="text" id="range"></input>
+          <input
+            id="range"
+            type="text"
+            index={index}
+            value={range}
+            onChange={handlechange}
+          ></input>
           <label htmlFor="duties">Duties</label>
-          <input type="text" id="duties"></input>
-          <FontAwesomeIcon icon={faPlus} />
+          {duties.map((duty) => {
+            return (
+              <input
+                id="duties"
+                type="text"
+                index={index}
+                dutiesindex={duties.indexOf(duty)}
+                value={duty}
+                onChange={handlechange}
+              ></input>
+            );
+          })}
+          <FontAwesomeIcon icon={faPlus} className="add-icon" />
+          <button type="submit">
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              size="2x"
+              className="submit-icon"
+            />
+          </button>
         </form>
       </fieldset>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import ExperienceForm from "./ExperienceForm";
 import uniqid from "uniqid";
 
@@ -10,7 +10,14 @@ class Experience extends Component {
   }
 
   render() {
-    const { companies, addingExperience, editInfo } = this.props;
+    const {
+      companies,
+      addingCompany,
+      editInfo,
+      addCompanyForm,
+      handleCompanyChange,
+      handleCompanySubmit,
+    } = this.props;
     return (
       <div className="experience">
         <h2>Experience</h2>
@@ -19,7 +26,12 @@ class Experience extends Component {
             const index = companies.indexOf(company);
 
             return company.editable ? (
-              <ExperienceForm />
+              <ExperienceForm
+                company={company}
+                index={index}
+                handlechange={handleCompanyChange}
+                handlesubmit={handleCompanySubmit}
+              />
             ) : (
               <li key={uniqid()} className="experience-list-item">
                 <div className="name-title-dates">
@@ -29,11 +41,11 @@ class Experience extends Component {
                 </div>
                 <ul className="experience-points">
                   {company.duties.map((duty) => {
-                    return <li>{duty}</li>;
+                    return <li key={uniqid()}>{duty}</li>;
                   })}
                 </ul>
                 <div>
-                  <button id={index} onClick={editInfo}>
+                  <button index={index} onClick={editInfo}>
                     E
                   </button>
                   <button>D</button>
@@ -42,8 +54,13 @@ class Experience extends Component {
             );
           })}
         </ul>
-        {!addingExperience ? (
-          <FontAwesomeIcon icon={faPlus} size="2x" className="add-icon" />
+        {!addingCompany ? (
+          <FontAwesomeIcon
+            icon={faPlus}
+            size="2x"
+            className="add-icon"
+            onClick={addCompanyForm}
+          />
         ) : null}
       </div>
     );

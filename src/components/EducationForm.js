@@ -9,27 +9,33 @@ class EducationForm extends Component {
 
   render() {
     const { institution, range } = this.props.school;
-    const { id } = this.props;
-    const { handleSubmit, handleChange } = this.props;
+    const { index } = this.props;
+    const { handlesubmit, handlechange } = this.props;
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handlesubmit}>
         <label htmlFor="school">School</label>
         <input
+          id="institution"
           type="text"
-          name="institution"
-          id={id}
+          index={index}
           value={institution}
-          onChange={handleChange}
+          onChange={handlechange}
         ></input>
         <label htmlFor="range">Dates</label>
         <input
+          id="range"
           type="text"
-          name="range"
-          id={id}
+          index={index}
           value={range}
-          onChange={handleChange}
+          onChange={handlechange}
         ></input>
-        <button type="submit">submit</button>
+        <button type="submit">
+          <FontAwesomeIcon
+            icon={faCircleCheck}
+            size="2x"
+            className="submit-icon"
+          />
+        </button>
       </form>
     );
   }

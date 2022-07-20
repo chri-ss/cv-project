@@ -32,7 +32,7 @@ class App extends Component {
         },
       ],
       addingSchool: false,
-      addingExperience: false,
+      addingCompany: false,
     };
   }
 
@@ -67,7 +67,10 @@ class App extends Component {
           }
         })
         .map((school) => {
-          if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
+          if (
+            this.state.schools.indexOf(school) ===
+            parseInt(e.target.getAttribute("index"))
+          ) {
             return { ...school, editable: true };
           } else {
             return { ...school, editable: false };
@@ -94,12 +97,15 @@ class App extends Component {
   };
 
   handleSchoolChange = (e) => {
-    const name = e.target.name;
+    const id = e.target.id;
     console.log(e.target.value);
     this.setState({
       schools: this.state.schools.map((school) => {
-        if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
-          return { ...school, [name]: e.target.value };
+        if (
+          this.state.schools.indexOf(school) ===
+          parseInt(e.target.getAttribute("index"))
+        ) {
+          return { ...school, [id]: e.target.value };
         } else {
           return { ...school };
         }
@@ -125,21 +131,90 @@ class App extends Component {
     console.log(e.target);
     this.setState({
       schools: this.state.schools.filter(
-        (school) => school !== this.state.schools[parseInt(e.target.id)]
+        (school) =>
+          school !==
+          this.state.schools[parseInt(e.target.getAttribute("index"))]
       ),
     });
   };
 
   editExperienceInfo = (e) => {
+    console.log(e.target);
     this.setState({
       companies: this.state.companies.map((company) => {
-        if (this.state.companies.indexOf(company) === parseInt(e.target.id)) {
+        if (
+          this.state.companies.indexOf(company) ===
+          parseInt(e.target.getAttribute("index"))
+        ) {
           return { ...company, editable: true };
         } else {
           return { ...company, editable: false };
         }
       }),
     });
+  };
+
+  handleCompanySubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.companies);
+    this.setState({
+      companies: this.state.companies.map((company) => {
+        if (company.editable) {
+          return { ...company, editable: false };
+        } else {
+          return { ...company };
+        }
+      }),
+      addingCompany: false,
+    });
+  };
+
+  handleCompanyChange = (e) => {
+    const id = e.target.id;
+    const index = parseInt(e.target.getAttribute("index"));
+    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
+    this.setState({
+      companies: this.state.companies.map((company) => {
+        if (
+          this.state.companies.indexOf(company) === index &&
+          id === "duties"
+        ) {
+          return {
+            ...company,
+            [id]: this.state.companies[index].duties.map((duty) => {
+              if (company.duties.indexOf(duty) === dutiesIndex) {
+                return (duty = e.target.value);
+              } else {
+                return duty;
+              }
+            }),
+          };
+        } else if (this.state.companies.indexOf(company) === index) {
+          return { ...company, [id]: e.target.value };
+        } else {
+          return { ...company };
+        }
+      }),
+    });
+  };
+
+  addCompanyForm = () => {
+    this.setState({
+      addingCompany: true,
+      companies: [
+        ...this.state.companies.map((company) => {
+          return { ...company, editable: false };
+        }),
+        {
+          name: "-",
+          title: "-",
+          range: "-",
+          duties: ["-", "-", "-"],
+          editable: true,
+        },
+      ],
+    });
+    console.log(this.state.addingCompany);
   };
 
   render() {
@@ -162,8 +237,11 @@ class App extends Component {
         />
         <Experience
           companies={this.state.companies}
-          addingExperience={this.addingExperience}
+          addingCompany={this.addingCompany}
           editInfo={this.editExperienceInfo}
+          handleCompanyChange={this.handleCompanyChange}
+          handleCompanySubmit={this.handleCompanySubmit}
+          addCompanyForm={this.addCompanyForm}
         />
       </div>
     );

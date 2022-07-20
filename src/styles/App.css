@@ -68,7 +68,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
 
   gap: 0.5rem;
   font-size: 24px;
@@ -89,8 +89,9 @@ ul {
 
 .experience-list-item {
   display: flex;
-  gap: 5rem;
-  margin: 3% 10% 0 10%;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1% 10% 0 10%;
 }
 
 .experience-points {
@@ -111,6 +112,10 @@ button {
   align-self: center;
   border: none;
   border-radius: 50%;
+}
+
+button[type="submit"] {
+  margin-top: 0.5rem
 }
 
 .general-form,
