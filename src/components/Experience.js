@@ -13,6 +13,7 @@ class Experience extends Component {
     const {
       companies,
       addingCompany,
+      addingDuty,
       editInfo,
       addCompanyForm,
       handleCompanyChange,
@@ -31,6 +32,7 @@ class Experience extends Component {
                 index={index}
                 handlechange={handleCompanyChange}
                 handlesubmit={handleCompanySubmit}
+                addingduty={addingDuty}
               />
             ) : (
               <li key={uniqid()} className="experience-list-item">

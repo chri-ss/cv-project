@@ -33,6 +33,7 @@ class App extends Component {
       ],
       addingSchool: false,
       addingCompany: false,
+      addingDuty: true,
     };
   }
 
@@ -141,16 +142,27 @@ class App extends Component {
   editExperienceInfo = (e) => {
     console.log(e.target);
     this.setState({
-      companies: this.state.companies.map((company) => {
-        if (
-          this.state.companies.indexOf(company) ===
-          parseInt(e.target.getAttribute("index"))
-        ) {
-          return { ...company, editable: true };
-        } else {
-          return { ...company, editable: false };
-        }
-      }),
+      companies: this.state.companies
+        .filter((company) => {
+          if (this.state.addingCompany) {
+            return (
+              company !== this.state.companies[this.state.companies.length - 1]
+            );
+          } else {
+            return company;
+          }
+        })
+        .map((company) => {
+          if (
+            this.state.companies.indexOf(company) ===
+            parseInt(e.target.getAttribute("index"))
+          ) {
+            return { ...company, editable: true };
+          } else {
+            return { ...company, editable: false };
+          }
+        }),
+      addingCompany: false,
     });
   };
 
@@ -237,7 +249,8 @@ class App extends Component {
         />
         <Experience
           companies={this.state.companies}
-          addingCompany={this.addingCompany}
+          addingCompany={this.state.addingCompany}
+          addingDuty={this.state.addingDuty}
           editInfo={this.editExperienceInfo}
           handleCompanyChange={this.handleCompanyChange}
           handleCompanySubmit={this.handleCompanySubmit}
