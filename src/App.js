@@ -33,7 +33,7 @@ class App extends Component {
       ],
       addingSchool: false,
       addingCompany: false,
-      addingDuty: true,
+      addingDuty: false,
     };
   }
 
@@ -218,15 +218,29 @@ class App extends Component {
           return { ...company, editable: false };
         }),
         {
-          name: "-",
-          title: "-",
-          range: "-",
-          duties: ["-", "-", "-"],
+          name: "",
+          title: "",
+          range: "",
+          duties: ["", "", ""],
           editable: true,
         },
       ],
     });
     console.log(this.state.addingCompany);
+  };
+
+  deleteCompany = (e) => {
+    this.setState({
+      companies: this.state.companies.filter(
+        (company) =>
+          company !==
+          this.state.companies[parseInt(e.target.getAttribute("index"))]
+      ),
+    });
+  };
+
+  addDuty = (e) => {
+    console.log(e.target);
   };
 
   render() {
@@ -255,6 +269,8 @@ class App extends Component {
           handleCompanyChange={this.handleCompanyChange}
           handleCompanySubmit={this.handleCompanySubmit}
           addCompanyForm={this.addCompanyForm}
+          addDuty={this.addDuty}
+          deleteCompany={this.deleteCompany}
         />
       </div>
     );

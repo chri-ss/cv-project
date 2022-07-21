@@ -16,6 +16,8 @@ class Experience extends Component {
       addingDuty,
       editInfo,
       addCompanyForm,
+      deleteCompany,
+      addDuty,
       handleCompanyChange,
       handleCompanySubmit,
     } = this.props;
@@ -33,6 +35,7 @@ class Experience extends Component {
                 handlechange={handleCompanyChange}
                 handlesubmit={handleCompanySubmit}
                 addingduty={addingDuty}
+                addDuty={addDuty}
               />
             ) : (
               <li key={uniqid()} className="experience-list-item">
@@ -50,7 +53,9 @@ class Experience extends Component {
                   <button index={index} onClick={editInfo}>
                     E
                   </button>
-                  <button>D</button>
+                  <button index={index} onClick={deleteCompany}>
+                    D
+                  </button>
                 </div>
               </li>
             );

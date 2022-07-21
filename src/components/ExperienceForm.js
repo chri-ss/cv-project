@@ -10,7 +10,7 @@ class ExperienceForm extends Component {
   render() {
     const { name, title, range, duties } = this.props.company;
     const { index } = this.props;
-    const { handlechange, handlesubmit, addingduty } = this.props;
+    const { handlechange, handlesubmit, addingduty, addDuty } = this.props;
     return (
       <fieldset className="experience">
         <form className="experience-form" onSubmit={handlesubmit}>
@@ -52,7 +52,11 @@ class ExperienceForm extends Component {
             );
           })}
           {!addingduty ? (
-            <FontAwesomeIcon icon={faPlus} className="add-icon" />
+            <FontAwesomeIcon
+              icon={faPlus}
+              className="add-icon"
+              onClick={addDuty}
+            />
           ) : null}
           <button type="submit">
             <FontAwesomeIcon
