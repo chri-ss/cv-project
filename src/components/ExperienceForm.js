@@ -9,8 +9,8 @@ class ExperienceForm extends Component {
 
   render() {
     const { name, title, range, duties } = this.props.company;
-    const { index } = this.props;
-    const { handlechange, handlesubmit, addingduty, addDuty } = this.props;
+    const { index, handlechange, handlesubmit, addingduty, addDuty } =
+      this.props;
     return (
       <fieldset className="experience">
         <form className="experience-form" onSubmit={handlesubmit}>
@@ -39,13 +39,13 @@ class ExperienceForm extends Component {
             onChange={handlechange}
           ></input>
           <label htmlFor="duties">Duties</label>
-          {duties.map((duty) => {
+          {duties.map((duty, i) => {
             return (
               <input
                 id="duties"
                 type="text"
                 index={index}
-                dutiesindex={duties.indexOf(duty)}
+                dutiesindex={i}
                 value={duty}
                 onChange={handlechange}
               ></input>

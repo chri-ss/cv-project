@@ -193,8 +193,8 @@ class App extends Component {
         ) {
           return {
             ...company,
-            [id]: this.state.companies[index].duties.map((duty) => {
-              if (company.duties.indexOf(duty) === dutiesIndex) {
+            [id]: this.state.companies[index].duties.map((duty, i) => {
+              if (i === dutiesIndex) {
                 return (duty = e.target.value);
               } else {
                 return duty;
@@ -208,6 +208,7 @@ class App extends Component {
         }
       }),
     });
+    console.log(e.target.getAttribute("dutiesindex"));
   };
 
   addCompanyForm = () => {
