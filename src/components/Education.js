@@ -28,16 +28,16 @@ class Education extends Component {
             return school.editable ? (
               <EducationForm
                 school={school}
-                id={index}
-                handleChange={handleSchoolChange}
-                handleSubmit={handleSchoolSubmit}
+                index={index}
+                handlechange={handleSchoolChange}
+                handlesubmit={handleSchoolSubmit}
               />
             ) : (
               <li key={uniqid()} className="school-and-range">
                 <div className="school">≫ {school.institution}</div>
                 <div className="range">{school.range}</div>
                 <button
-                  id={index}
+                  index={index}
                   icon={faPenToSquare}
                   className="edit-icon"
                   onClick={editInfo}
@@ -45,7 +45,7 @@ class Education extends Component {
                   E
                 </button>
                 <button
-                  id={index}
+                  index={index}
                   className="delete-icon"
                   onClick={deleteSchool}
                 >

@@ -28,9 +28,12 @@ class App extends Component {
           title: "middle manager",
           range: "date - date",
           duties: ["salting", "managing", "getting fired"],
+          editable: false,
         },
       ],
       addingSchool: false,
+      addingCompany: false,
+      addingDuty: false,
     };
   }
 
@@ -65,7 +68,10 @@ class App extends Component {
           }
         })
         .map((school) => {
-          if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
+          if (
+            this.state.schools.indexOf(school) ===
+            parseInt(e.target.getAttribute("index"))
+          ) {
             return { ...school, editable: true };
           } else {
             return { ...school, editable: false };
@@ -92,12 +98,15 @@ class App extends Component {
   };
 
   handleSchoolChange = (e) => {
-    const name = e.target.name;
+    const id = e.target.id;
     console.log(e.target.value);
     this.setState({
       schools: this.state.schools.map((school) => {
-        if (this.state.schools.indexOf(school) === parseInt(e.target.id)) {
-          return { ...school, [name]: e.target.value };
+        if (
+          this.state.schools.indexOf(school) ===
+          parseInt(e.target.getAttribute("index"))
+        ) {
+          return { ...school, [id]: e.target.value };
         } else {
           return { ...school };
         }
@@ -123,9 +132,116 @@ class App extends Component {
     console.log(e.target);
     this.setState({
       schools: this.state.schools.filter(
-        (school) => school !== this.state.schools[parseInt(e.target.id)]
+        (school) =>
+          school !==
+          this.state.schools[parseInt(e.target.getAttribute("index"))]
       ),
     });
+  };
+
+  editExperienceInfo = (e) => {
+    console.log(e.target);
+    this.setState({
+      companies: this.state.companies
+        .filter((company) => {
+          if (this.state.addingCompany) {
+            return (
+              company !== this.state.companies[this.state.companies.length - 1]
+            );
+          } else {
+            return company;
+          }
+        })
+        .map((company) => {
+          if (
+            this.state.companies.indexOf(company) ===
+            parseInt(e.target.getAttribute("index"))
+          ) {
+            return { ...company, editable: true };
+          } else {
+            return { ...company, editable: false };
+          }
+        }),
+      addingCompany: false,
+    });
+  };
+
+  handleCompanySubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.companies);
+    this.setState({
+      companies: this.state.companies.map((company) => {
+        if (company.editable) {
+          return { ...company, editable: false };
+        } else {
+          return { ...company };
+        }
+      }),
+      addingCompany: false,
+    });
+  };
+
+  handleCompanyChange = (e) => {
+    const id = e.target.id;
+    const index = parseInt(e.target.getAttribute("index"));
+    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
+    this.setState({
+      companies: this.state.companies.map((company) => {
+        if (
+          this.state.companies.indexOf(company) === index &&
+          id === "duties"
+        ) {
+          return {
+            ...company,
+            [id]: this.state.companies[index].duties.map((duty, i) => {
+              if (i === dutiesIndex) {
+                return (duty = e.target.value);
+              } else {
+                return duty;
+              }
+            }),
+          };
+        } else if (this.state.companies.indexOf(company) === index) {
+          return { ...company, [id]: e.target.value };
+        } else {
+          return { ...company };
+        }
+      }),
+    });
+    console.log(e.target.getAttribute("dutiesindex"));
+  };
+
+  addCompanyForm = () => {
+    this.setState({
+      addingCompany: true,
+      companies: [
+        ...this.state.companies.map((company) => {
+          return { ...company, editable: false };
+        }),
+        {
+          name: "",
+          title: "",
+          range: "",
+          duties: ["", "", ""],
+          editable: true,
+        },
+      ],
+    });
+    console.log(this.state.addingCompany);
+  };
+
+  deleteCompany = (e) => {
+    this.setState({
+      companies: this.state.companies.filter(
+        (company) =>
+          company !==
+          this.state.companies[parseInt(e.target.getAttribute("index"))]
+      ),
+    });
+  };
+
+  addDuty = (e) => {
+    console.log(e.target);
   };
 
   render() {
@@ -146,7 +262,17 @@ class App extends Component {
           addSchoolForm={this.addSchoolForm}
           deleteSchool={this.deleteSchool}
         />
-        <Experience companies={this.state.companies} />
+        <Experience
+          companies={this.state.companies}
+          addingCompany={this.state.addingCompany}
+          addingDuty={this.state.addingDuty}
+          editInfo={this.editExperienceInfo}
+          handleCompanyChange={this.handleCompanyChange}
+          handleCompanySubmit={this.handleCompanySubmit}
+          addCompanyForm={this.addCompanyForm}
+          addDuty={this.addDuty}
+          deleteCompany={this.deleteCompany}
+        />
       </div>
     );
   }
