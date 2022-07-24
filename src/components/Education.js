@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPenToSquare,
+  faPlus,
+  faSchool,
+} from "@fortawesome/free-solid-svg-icons";
 import EducationForm from "./EducationForm";
 import uniqid from "uniqid";
 
@@ -34,7 +38,9 @@ class Education extends Component {
               />
             ) : (
               <li key={uniqid()} className="school-and-range">
-                <div className="school">≫ {school.institution}</div>
+                <div className="school">
+                  <FontAwesomeIcon icon={faSchool} /> {school.institution}
+                </div>
                 <div className="range">{school.range}</div>
                 <button
                   index={index}
