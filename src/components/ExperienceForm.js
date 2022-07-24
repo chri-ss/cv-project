@@ -54,6 +54,7 @@ class ExperienceForm extends Component {
           {!addingduty ? (
             <FontAwesomeIcon
               icon={faPlus}
+              index={index}
               className="add-icon"
               onClick={addDuty}
             />

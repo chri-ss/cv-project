@@ -178,6 +178,7 @@ class App extends Component {
         }
       }),
       addingCompany: false,
+      addingDuty: false,
     });
     console.log(this.state.companies);
   };
@@ -223,7 +224,7 @@ class App extends Component {
           name: "",
           title: "",
           range: "",
-          duties: ["", "", ""],
+          duties: [""],
           editable: true,
         },
       ],
@@ -243,6 +244,18 @@ class App extends Component {
 
   addDuty = (e) => {
     console.log(e.target);
+    const index = parseInt(e.target.getAttribute("index"));
+    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
+    this.setState({
+      companies: this.state.companies.map((company, i) => {
+        if (i === index) {
+          return { ...company, duties: [...company.duties, ""] };
+        } else {
+          return { ...company, duties: [...company.duties] };
+        }
+      }),
+      addingDuty: true,
+    });
   };
 
   deleteDuty = (e) => {
