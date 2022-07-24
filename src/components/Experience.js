@@ -18,6 +18,7 @@ class Experience extends Component {
       addCompanyForm,
       deleteCompany,
       addDuty,
+      deleteDuty,
       handleCompanyChange,
       handleCompanySubmit,
     } = this.props;
@@ -45,8 +46,19 @@ class Experience extends Component {
                   <div className="company-range">{company.range}</div>
                 </div>
                 <ul className="experience-points">
-                  {company.duties.map((duty) => {
-                    return <li key={uniqid()}>{duty}</li>;
+                  {company.duties.map((duty, i) => {
+                    return (
+                      <li key={uniqid()} className="duty">
+                        {duty}
+                        <button
+                          index={index}
+                          dutiesindex={i}
+                          onClick={deleteDuty}
+                        >
+                          D
+                        </button>
+                      </li>
+                    );
                   })}
                 </ul>
                 <div>

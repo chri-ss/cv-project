@@ -179,6 +179,7 @@ class App extends Component {
       }),
       addingCompany: false,
     });
+    console.log(this.state.companies);
   };
 
   handleCompanyChange = (e) => {
@@ -244,6 +245,26 @@ class App extends Component {
     console.log(e.target);
   };
 
+  deleteDuty = (e) => {
+    const index = parseInt(e.target.getAttribute("index"));
+    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
+    this.setState({
+      companies: this.state.companies.map((company, i) => {
+        if (i === index) {
+          return {
+            ...company,
+            duties: company.duties.filter((duty) => {
+              return duty !== company.duties[dutiesIndex];
+            }),
+          };
+        } else {
+          return { company, duties: [...company.duties] };
+        }
+      }),
+    });
+    console.log(this.state.companies);
+  };
+
   render() {
     return (
       <div>
@@ -271,6 +292,7 @@ class App extends Component {
           handleCompanySubmit={this.handleCompanySubmit}
           addCompanyForm={this.addCompanyForm}
           addDuty={this.addDuty}
+          deleteDuty={this.deleteDuty}
           deleteCompany={this.deleteCompany}
         />
       </div>
