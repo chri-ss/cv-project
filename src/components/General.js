@@ -1,14 +1,8 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { FaEdit } from "react-icons/fa";
 import GeneralForm from "./GeneralForm";
 
 class General extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { name, city, email, phone, editable } = this.props.info.general;
     const { handleGeneralSubmit, handleGeneralChange } = this.props;
@@ -27,10 +21,9 @@ class General extends Component {
           <p className="email">{email}</p>
           <p className="p">{phone}</p>
         </div>
-        <FontAwesomeIcon
-          icon={faPenToSquare}
-          size="2x"
+        <FaEdit
           className="edit-icon"
+          size="2em"
           onClick={this.props.editInfo}
         />
       </div>

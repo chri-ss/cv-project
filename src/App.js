@@ -224,7 +224,7 @@ class App extends Component {
           name: "",
           title: "",
           range: "",
-          duties: [""],
+          duties: [],
           editable: true,
         },
       ],
@@ -245,7 +245,6 @@ class App extends Component {
   addDuty = (e) => {
     console.log(e.target);
     const index = parseInt(e.target.getAttribute("index"));
-    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
     this.setState({
       companies: this.state.companies.map((company, i) => {
         if (i === index) {

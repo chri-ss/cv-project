@@ -101,7 +101,8 @@ ul {
 }
 
 .submit-icon:hover,
-.add-icon:hover {
+.add-icon:hover,
+.edit-icon:hover {
   color: slateblue;
 }
 
