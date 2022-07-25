@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCircleCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FaEdit } from "react-icons/fa";
+
+import { BsCheckCircleFill } from "react-icons/bs";
 
 class ExperienceForm extends Component {
   render() {
@@ -48,19 +51,10 @@ class ExperienceForm extends Component {
             );
           })}
           {!addingduty ? (
-            <FontAwesomeIcon
-              icon={faPlus}
-              index={index}
-              className="add-icon"
-              onClick={addDuty}
-            />
+            <FaEdit index={index} className="add-icon" onClick={addDuty} />
           ) : null}
           <button type="submit">
-            <FontAwesomeIcon
-              icon={faCircleCheck}
-              size="2x"
-              className="submit-icon"
-            />
+            <BsCheckCircleFill size="1.5em" className="submit-icon" />
           </button>
         </form>
       </fieldset>
