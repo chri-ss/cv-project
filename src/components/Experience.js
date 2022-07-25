@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FaBuilding, FaTrashAlt, FaEdit } from "react-icons/fa";
+import { GoDiffAdded } from "react-icons/go";
 import ExperienceForm from "./ExperienceForm";
 import uniqid from "uniqid";
 
 class Experience extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       companies,
@@ -41,7 +37,10 @@ class Experience extends Component {
             ) : (
               <li key={uniqid()} className="experience-list-item">
                 <div className="name-title-dates">
-                  <div className="company-name">{company.name}</div>
+                  <div className="company-name">
+                    <FaBuilding />
+                    {company.name}
+                  </div>
                   <div className="title">{company.title}</div>
                   <div className="company-range">{company.range}</div>
                 </div>
@@ -50,33 +49,37 @@ class Experience extends Component {
                     return (
                       <li key={uniqid()} className="duty">
                         {duty}
-                        <button
+                        <FaTrashAlt
                           index={index}
                           dutiesindex={i}
+                          className="delete-icon"
                           onClick={deleteDuty}
-                        >
-                          D
-                        </button>
+                        />
                       </li>
                     );
                   })}
                 </ul>
                 <div>
-                  <button index={index} onClick={editInfo}>
-                    E
-                  </button>
-                  <button index={index} onClick={deleteCompany}>
-                    D
-                  </button>
+                  <FaEdit
+                    index={index}
+                    size="1.5em"
+                    className="edit-icon"
+                    onClick={editInfo}
+                  />
+                  <FaTrashAlt
+                    index={index}
+                    size="1.5em"
+                    className="delete-icon"
+                    onClick={deleteCompany}
+                  />
                 </div>
               </li>
             );
           })}
         </ul>
         {!addingCompany ? (
-          <FontAwesomeIcon
-            icon={faPlus}
-            size="2x"
+          <GoDiffAdded
+            size="2em"
             className="add-icon"
             onClick={addCompanyForm}
           />

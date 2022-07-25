@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { BsCheckCircleFill } from "react-icons/bs";
 
 class GeneralForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { name, city, email, phone } = this.props.info;
     const { handleSubmit, handleChange } = this.props;
@@ -20,6 +15,7 @@ class GeneralForm extends Component {
             id="name"
             value={name}
             onChange={handleChange}
+            required
           ></input>
           <label htmlFor="city">Location</label>
           <input
@@ -27,6 +23,7 @@ class GeneralForm extends Component {
             id="city"
             value={city}
             onChange={handleChange}
+            required
           ></input>
           <label htmlFor="email">Email</label>
           <input
@@ -34,6 +31,7 @@ class GeneralForm extends Component {
             id="email"
             value={email}
             onChange={handleChange}
+            required
           ></input>
           <label htmlFor="phone">Phone</label>
           <input
@@ -41,13 +39,10 @@ class GeneralForm extends Component {
             id="phone"
             value={phone}
             onChange={handleChange}
+            required
           ></input>
           <button type="submit">
-            <FontAwesomeIcon
-              icon={faCircleCheck}
-              size="2x"
-              className="submit-icon"
-            />
+            <BsCheckCircleFill size="2em" className="submit-icon" />
           </button>
         </form>
       </fieldset>

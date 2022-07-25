@@ -1,18 +1,11 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPenToSquare,
-  faPlus,
-  faSchool,
-} from "@fortawesome/free-solid-svg-icons";
 import EducationForm from "./EducationForm";
+import { TbSchool } from "react-icons/tb";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { GoDiffAdded } from "react-icons/go";
 import uniqid from "uniqid";
 
 class Education extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       schools,
@@ -39,32 +32,28 @@ class Education extends Component {
             ) : (
               <li key={uniqid()} className="school-and-range">
                 <div className="school">
-                  <FontAwesomeIcon icon={faSchool} /> {school.institution}
+                  <TbSchool /> {school.institution}
                 </div>
                 <div className="range">{school.range}</div>
-                <button
+                <FaEdit
                   index={index}
-                  icon={faPenToSquare}
                   className="edit-icon"
+                  size="1.5em"
                   onClick={editInfo}
-                >
-                  E
-                </button>
-                <button
+                />
+                <FaTrashAlt
                   index={index}
                   className="delete-icon"
+                  size="1.5em"
                   onClick={deleteSchool}
-                >
-                  D
-                </button>
+                />
               </li>
             );
           })}
         </ul>
         {!addingSchool ? (
-          <FontAwesomeIcon
-            icon={faPlus}
-            size="2x"
+          <GoDiffAdded
+            size="2em"
             className="add-icon"
             onClick={addSchoolForm}
           />

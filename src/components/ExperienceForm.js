@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCircleCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FaEdit } from "react-icons/fa";
+
+import { BsCheckCircleFill } from "react-icons/bs";
 
 class ExperienceForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { name, title, range, duties } = this.props.company;
     const { index, handlechange, handlesubmit, addingduty, addDuty } =
@@ -21,6 +20,8 @@ class ExperienceForm extends Component {
             index={index}
             value={name}
             onChange={handlechange}
+            required
+            placeholder="a current or former workplace"
           ></input>
           <label htmlFor="title">Title</label>
           <input
@@ -29,6 +30,8 @@ class ExperienceForm extends Component {
             index={index}
             value={title}
             onChange={handlechange}
+            required
+            placeholder="your title"
           ></input>
           <label htmlFor="range">Range</label>
           <input
@@ -37,6 +40,8 @@ class ExperienceForm extends Component {
             index={index}
             value={range}
             onChange={handlechange}
+            required
+            placeholder="how long you worked there"
           ></input>
           <label htmlFor="duties">Duties</label>
           {duties.map((duty, i) => {
@@ -48,23 +53,16 @@ class ExperienceForm extends Component {
                 dutiesindex={i}
                 value={duty}
                 onChange={handlechange}
+                required
+                placeholder="what you did there"
               ></input>
             );
           })}
           {!addingduty ? (
-            <FontAwesomeIcon
-              icon={faPlus}
-              index={index}
-              className="add-icon"
-              onClick={addDuty}
-            />
+            <FaEdit index={index} className="add-icon" onClick={addDuty} />
           ) : null}
           <button type="submit">
-            <FontAwesomeIcon
-              icon={faCircleCheck}
-              size="2x"
-              className="submit-icon"
-            />
+            <BsCheckCircleFill size="1.5em" className="submit-icon" />
           </button>
         </form>
       </fieldset>

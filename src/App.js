@@ -70,7 +70,7 @@ class App extends Component {
         .map((school) => {
           if (
             this.state.schools.indexOf(school) ===
-            parseInt(e.target.getAttribute("index"))
+            parseInt(e.currentTarget.getAttribute("index"))
           ) {
             return { ...school, editable: true };
           } else {
@@ -79,7 +79,7 @@ class App extends Component {
         }),
       addingSchool: false,
     });
-    console.log(this.state);
+    console.log(e.currentTarget);
   };
 
   handleSchoolSubmit = (e) => {
@@ -129,12 +129,11 @@ class App extends Component {
   };
 
   deleteSchool = (e) => {
-    console.log(e.target);
     this.setState({
       schools: this.state.schools.filter(
         (school) =>
           school !==
-          this.state.schools[parseInt(e.target.getAttribute("index"))]
+          this.state.schools[parseInt(e.currentTarget.getAttribute("index"))]
       ),
     });
   };
@@ -155,7 +154,7 @@ class App extends Component {
         .map((company) => {
           if (
             this.state.companies.indexOf(company) ===
-            parseInt(e.target.getAttribute("index"))
+            parseInt(e.currentTarget.getAttribute("index"))
           ) {
             return { ...company, editable: true };
           } else {
@@ -224,7 +223,7 @@ class App extends Component {
           name: "",
           title: "",
           range: "",
-          duties: [""],
+          duties: [],
           editable: true,
         },
       ],
@@ -237,15 +236,14 @@ class App extends Component {
       companies: this.state.companies.filter(
         (company) =>
           company !==
-          this.state.companies[parseInt(e.target.getAttribute("index"))]
+          this.state.companies[parseInt(e.currentTarget.getAttribute("index"))]
       ),
     });
   };
 
   addDuty = (e) => {
     console.log(e.target);
-    const index = parseInt(e.target.getAttribute("index"));
-    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
+    const index = parseInt(e.currentTarget.getAttribute("index"));
     this.setState({
       companies: this.state.companies.map((company, i) => {
         if (i === index) {
@@ -259,8 +257,8 @@ class App extends Component {
   };
 
   deleteDuty = (e) => {
-    const index = parseInt(e.target.getAttribute("index"));
-    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
+    const index = parseInt(e.currentTarget.getAttribute("index"));
+    const dutiesIndex = parseInt(e.currentTarget.getAttribute("dutiesindex"));
     this.setState({
       companies: this.state.companies.map((company, i) => {
         if (i === index) {
