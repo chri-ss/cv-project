@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCircleCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FaEdit } from "react-icons/fa";
 
 import { BsCheckCircleFill } from "react-icons/bs";

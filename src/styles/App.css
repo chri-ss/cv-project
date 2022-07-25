@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "catamaran";
+  src: url(../fonts/catamaran/Catamaran-Black.ttf) format("truetype");
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -6,10 +11,16 @@ body {
   height: 100%;
   padding: 5rem;
   box-sizing: border-box;
+  background-color: #8674fc;
 }
 
 #root {
   width: 50%;
+  background-color: #fffeff;
+  border: 2px solid #253044;
+  border-radius: 1rem;
+
+  font-family: 'catamaran', sans-serif;
 }
 
 .general,
@@ -20,8 +31,13 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  padding: 1rem;
+  margin: 1rem 3rem 1rem 3rem;
+  color: #253044;
+}
+
+.general,
+.education {
+  border-bottom: 1px solid #253044;
 }
 
 .general,
@@ -112,7 +128,7 @@ ul {
 .add-icon:hover,
 .delete-icon:hover,
 .edit-icon:hover {
-  color: slateblue;
+  color: #20cdf5;
 }
 
 button {
