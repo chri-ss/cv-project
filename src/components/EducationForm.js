@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { BsCheckCircleFill } from "react-icons/bs";
 
 class EducationForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { institution, range } = this.props.school;
     const { index } = this.props;
     const { handlesubmit, handlechange } = this.props;
     return (
-      <form onSubmit={handlesubmit}>
+      <form onSubmit={handlesubmit} className="education-form">
         <label htmlFor="school">School</label>
         <input
           id="institution"
@@ -30,11 +25,7 @@ class EducationForm extends Component {
           onChange={handlechange}
         ></input>
         <button type="submit">
-          <FontAwesomeIcon
-            icon={faCircleCheck}
-            size="2x"
-            className="submit-icon"
-          />
+          <BsCheckCircleFill size="1.5em" className="submit-icon" />
         </button>
       </form>
     );

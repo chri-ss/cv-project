@@ -57,6 +57,12 @@ ul {
   gap: 0.5rem;
 }
 
+.education-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .school-and-range {
   display: flex;
   justify-content: center;
@@ -76,6 +82,8 @@ ul {
 }
 
 .school {
+  display: flex;
+  gap: 0.5rem;
   font-size: 24px;
   font-weight: bold;
   padding: 0.5rem;
@@ -102,20 +110,16 @@ ul {
 
 .submit-icon:hover,
 .add-icon:hover,
+.delete-icon:hover,
 .edit-icon:hover {
   color: slateblue;
 }
 
 button {
   width: fit-content;
-  padding: 0;
   align-self: center;
   border: none;
   border-radius: 50%;
-}
-
-button[type="submit"] {
-  margin-top: 0.5rem;
 }
 
 .general-form,

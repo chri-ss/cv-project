@@ -70,7 +70,7 @@ class App extends Component {
         .map((school) => {
           if (
             this.state.schools.indexOf(school) ===
-            parseInt(e.target.getAttribute("index"))
+            parseInt(e.currentTarget.getAttribute("index"))
           ) {
             return { ...school, editable: true };
           } else {
@@ -79,7 +79,7 @@ class App extends Component {
         }),
       addingSchool: false,
     });
-    console.log(this.state);
+    console.log(e.currentTarget);
   };
 
   handleSchoolSubmit = (e) => {
@@ -129,12 +129,11 @@ class App extends Component {
   };
 
   deleteSchool = (e) => {
-    console.log(e.target);
     this.setState({
       schools: this.state.schools.filter(
         (school) =>
           school !==
-          this.state.schools[parseInt(e.target.getAttribute("index"))]
+          this.state.schools[parseInt(e.currentTarget.getAttribute("index"))]
       ),
     });
   };

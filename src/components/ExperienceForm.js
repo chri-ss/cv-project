@@ -3,10 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class ExperienceForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { name, title, range, duties } = this.props.company;
     const { index, handlechange, handlesubmit, addingduty, addDuty } =
