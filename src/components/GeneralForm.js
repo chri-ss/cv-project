@@ -15,6 +15,7 @@ class GeneralForm extends Component {
             id="name"
             value={name}
             onChange={handleChange}
+            required
           ></input>
           <label htmlFor="city">Location</label>
           <input
@@ -22,6 +23,7 @@ class GeneralForm extends Component {
             id="city"
             value={city}
             onChange={handleChange}
+            required
           ></input>
           <label htmlFor="email">Email</label>
           <input
@@ -29,6 +31,7 @@ class GeneralForm extends Component {
             id="email"
             value={email}
             onChange={handleChange}
+            required
           ></input>
           <label htmlFor="phone">Phone</label>
           <input
@@ -36,6 +39,7 @@ class GeneralForm extends Component {
             id="phone"
             value={phone}
             onChange={handleChange}
+            required
           ></input>
           <button type="submit">
             <BsCheckCircleFill size="2em" className="submit-icon" />

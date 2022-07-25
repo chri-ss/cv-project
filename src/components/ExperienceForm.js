@@ -20,6 +20,8 @@ class ExperienceForm extends Component {
             index={index}
             value={name}
             onChange={handlechange}
+            required
+            placeholder="a current or former workplace"
           ></input>
           <label htmlFor="title">Title</label>
           <input
@@ -28,6 +30,8 @@ class ExperienceForm extends Component {
             index={index}
             value={title}
             onChange={handlechange}
+            required
+            placeholder="your title"
           ></input>
           <label htmlFor="range">Range</label>
           <input
@@ -36,6 +40,8 @@ class ExperienceForm extends Component {
             index={index}
             value={range}
             onChange={handlechange}
+            required
+            placeholder="how long you worked there"
           ></input>
           <label htmlFor="duties">Duties</label>
           {duties.map((duty, i) => {
@@ -47,6 +53,8 @@ class ExperienceForm extends Component {
                 dutiesindex={i}
                 value={duty}
                 onChange={handlechange}
+                required
+                placeholder="what you did there"
               ></input>
             );
           })}

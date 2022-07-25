@@ -15,6 +15,8 @@ class EducationForm extends Component {
           index={index}
           value={institution}
           onChange={handlechange}
+          required
+          placeholder="a school you attended"
         ></input>
         <label htmlFor="range">Dates</label>
         <input
@@ -23,6 +25,8 @@ class EducationForm extends Component {
           index={index}
           value={range}
           onChange={handlechange}
+          required
+          placeholder="how long you attended"
         ></input>
         <button type="submit">
           <BsCheckCircleFill size="1.5em" className="submit-icon" />
