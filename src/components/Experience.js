@@ -59,7 +59,7 @@ class Experience extends Component {
                     );
                   })}
                 </ul>
-                <div>
+                <div className="edit-and-delete-company">
                   <FaEdit
                     index={index}
                     size="1.5em"

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "catamaran";
+  src: url(../fonts/catamaran/Catamaran-Black.ttf) format("truetype");
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -6,10 +11,16 @@ body {
   height: 100%;
   padding: 5rem;
   box-sizing: border-box;
+  background-color: #8674fc;
 }
 
 #root {
   width: 50%;
+  background-color: #fffeff;
+  border: 2px solid #253044;
+  border-radius: 1rem;
+  font-family: "catamaran", sans-serif;
+  color: #253044;
 }
 
 .general,
@@ -20,12 +31,17 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  padding: 1rem;
+  margin: 1rem 3rem 1rem 3rem;
 }
 
 .general,
-.education > * {
+.education {
+  border-bottom: 1px solid #253044;
+}
+
+.general,
+.education,
+.experience > * {
   padding: 1rem;
 }
 
@@ -95,24 +111,34 @@ ul {
   padding-right: 1rem;
 }
 
+.experience > ul {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
 .experience-list-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
   margin: 1% 10% 0 10%;
+  width: 60%;
+  border-bottom: 1px solid #253044;
 }
 
 .experience-points {
   display: flex;
   flex: 1;
-  width: 100%;
+  width: 80%;
+  padding: 1rem;
 }
 
 .submit-icon:hover,
 .add-icon:hover,
 .delete-icon:hover,
 .edit-icon:hover {
-  color: slateblue;
+  color: #20cdf5;
 }
 
 button {
@@ -126,12 +152,16 @@ button {
 .experience-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .title {
   font-size: 16px;
 }
 .company-name {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   text-decoration: underline;
 }
 
@@ -142,4 +172,20 @@ button {
 .duty {
   display: flex;
   justify-content: space-between;
+  font-size: 18px;
+}
+
+.edit-and-delete-company {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 3rem;
+  color: #253044;
 }
