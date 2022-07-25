@@ -19,8 +19,6 @@ class App extends Component {
       },
       schools: [
         { institution: "some school", range: "date - date", editable: false },
-        { institution: "some school", range: "date - date", editable: false },
-        { institution: "some school", range: "date - date", editable: false },
       ],
       companies: [
         {
