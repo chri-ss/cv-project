@@ -182,10 +182,15 @@ button {
   padding: 1rem;
 }
 
-img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 3rem;
-  color: #253044;
+@media screen and (max-width: 700px) {
+  #root {
+    width: 90vw;
+  }
+  .school-and-range {
+    flex-direction: column;
+  }
+
+  .education-form {
+    flex-direction: column;
+  }
 }
