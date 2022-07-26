@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/cv-project/static/css/main.0ded3d11.css",
-    "main.js": "/cv-project/static/js/main.8ff68f46.js",
+    "main.css": "/cv-project/static/css/main.30955771.css",
+    "main.js": "/cv-project/static/js/main.8ba01e69.js",
     "static/media/Catamaran-Black.ttf": "/cv-project/static/media/Catamaran-Black.4b398c9fb5756258e2c4.ttf",
     "index.html": "/cv-project/index.html",
-    "main.0ded3d11.css.map": "/cv-project/static/css/main.0ded3d11.css.map",
-    "main.8ff68f46.js.map": "/cv-project/static/js/main.8ff68f46.js.map"
+    "main.30955771.css.map": "/cv-project/static/css/main.30955771.css.map",
+    "main.8ba01e69.js.map": "/cv-project/static/js/main.8ba01e69.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ded3d11.css",
-    "static/js/main.8ff68f46.js"
+    "static/css/main.30955771.css",
+    "static/js/main.8ba01e69.js"
   ]
 }
