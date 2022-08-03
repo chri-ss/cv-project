@@ -10,9 +10,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      schools: [
-        { institution: "some school", range: "date - date", editable: false },
-      ],
+      // schools: [
+      // { institution: "some school", range: "date - date", editable: false },
+      // ],
       companies: [
         {
           name: "cracker factory",
@@ -22,36 +22,10 @@ class App extends Component {
           editable: false,
         },
       ],
-      addingSchool: false,
       addingCompany: false,
       addingDuty: false,
     };
   }
-
-  editSchoolInfo = (e) => {
-    this.setState({
-      schools: this.state.schools
-        .filter((school) => {
-          if (this.state.addingSchool) {
-            return school !== this.state.schools[this.state.schools.length - 1];
-          } else {
-            return school;
-          }
-        })
-        .map((school) => {
-          if (
-            this.state.schools.indexOf(school) ===
-            parseInt(e.currentTarget.getAttribute("index"))
-          ) {
-            return { ...school, editable: true };
-          } else {
-            return { ...school, editable: false };
-          }
-        }),
-      addingSchool: false,
-    });
-    console.log(e.currentTarget);
-  };
 
   handleSchoolSubmit = (e) => {
     e.preventDefault();
@@ -252,13 +226,13 @@ class App extends Component {
       <div>
         <General />
         <Education
-          schools={this.state.schools}
-          addingSchool={this.state.addingSchool}
-          editInfo={this.editSchoolInfo}
-          handleSchoolChange={this.handleSchoolChange}
-          handleSchoolSubmit={this.handleSchoolSubmit}
-          addSchoolForm={this.addSchoolForm}
-          deleteSchool={this.deleteSchool}
+        // schools={this.state.schools}
+        // addingSchool={this.state.addingSchool}
+        // editInfo={this.editSchoolInfo}
+        // handleSchoolChange={this.handleSchoolChange}
+        // handleSchoolSubmit={this.handleSchoolSubmit}
+        // addSchoolForm={this.addSchoolForm}
+        // deleteSchool={this.deleteSchool}
         />
         <Experience
           companies={this.state.companies}
