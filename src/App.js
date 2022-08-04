@@ -10,9 +10,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      schools: [
-        { institution: "some school", range: "date - date", editable: false },
-      ],
       companies: [
         {
           name: "cracker factory",
@@ -22,92 +19,10 @@ class App extends Component {
           editable: false,
         },
       ],
-      addingSchool: false,
       addingCompany: false,
       addingDuty: false,
     };
   }
-
-  editSchoolInfo = (e) => {
-    this.setState({
-      schools: this.state.schools
-        .filter((school) => {
-          if (this.state.addingSchool) {
-            return school !== this.state.schools[this.state.schools.length - 1];
-          } else {
-            return school;
-          }
-        })
-        .map((school) => {
-          if (
-            this.state.schools.indexOf(school) ===
-            parseInt(e.currentTarget.getAttribute("index"))
-          ) {
-            return { ...school, editable: true };
-          } else {
-            return { ...school, editable: false };
-          }
-        }),
-      addingSchool: false,
-    });
-    console.log(e.currentTarget);
-  };
-
-  handleSchoolSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.target);
-    this.setState({
-      schools: this.state.schools.map((school) => {
-        if (school.editable) {
-          return { ...school, editable: false };
-        } else {
-          return { ...school };
-        }
-      }),
-      addingSchool: false,
-    });
-  };
-
-  handleSchoolChange = (e) => {
-    const id = e.target.id;
-    console.log(e.target.value);
-    this.setState({
-      schools: this.state.schools.map((school) => {
-        if (
-          this.state.schools.indexOf(school) ===
-          parseInt(e.target.getAttribute("index"))
-        ) {
-          return { ...school, [id]: e.target.value };
-        } else {
-          return { ...school };
-        }
-      }),
-    });
-    console.log(this.state);
-  };
-
-  addSchoolForm = () => {
-    this.setState({
-      addingSchool: true,
-      schools: [
-        ...this.state.schools.map((school) => {
-          return { ...school, editable: false };
-        }),
-        { institution: "", range: "", editable: true },
-      ],
-    });
-    console.log(this.state);
-  };
-
-  deleteSchool = (e) => {
-    this.setState({
-      schools: this.state.schools.filter(
-        (school) =>
-          school !==
-          this.state.schools[parseInt(e.currentTarget.getAttribute("index"))]
-      ),
-    });
-  };
 
   editExperienceInfo = (e) => {
     console.log(e.target);
@@ -252,13 +167,13 @@ class App extends Component {
       <div>
         <General />
         <Education
-          schools={this.state.schools}
-          addingSchool={this.state.addingSchool}
-          editInfo={this.editSchoolInfo}
-          handleSchoolChange={this.handleSchoolChange}
-          handleSchoolSubmit={this.handleSchoolSubmit}
-          addSchoolForm={this.addSchoolForm}
-          deleteSchool={this.deleteSchool}
+        // schools={this.state.schools}
+        // addingSchool={this.state.addingSchool}
+        // editInfo={this.editSchoolInfo}
+        // handleSchoolChange={this.handleSchoolChange}
+        // handleSchoolSubmit={this.handleSchoolSubmit}
+        // addSchoolForm={this.addSchoolForm}
+        // deleteSchool={this.deleteSchool}
         />
         <Experience
           companies={this.state.companies}
