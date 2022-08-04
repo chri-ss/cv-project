@@ -121,6 +121,25 @@ const Experience = () => {
     setAddingDuty(true);
   };
 
+  const deleteDuty = (e) => {
+    const index = parseInt(e.currentTarget.getAttribute("index"));
+    const dutiesIndex = parseInt(e.currentTarget.getAttribute("dutiesindex"));
+    setCompanies(
+      companies.map((company, i) => {
+        if (i === index) {
+          return {
+            ...company,
+            duties: company.duties.filter((duty) => {
+              return duty !== company.duties[dutiesIndex];
+            }),
+          };
+        } else {
+          return { company, duties: [...company.duties] };
+        }
+      })
+    );
+  };
+
   return (
     <div className="experience">
       <h2>Experience</h2>
@@ -156,7 +175,7 @@ const Experience = () => {
                         index={index}
                         dutiesindex={i}
                         className="delete-icon"
-                        // onClick={deleteDuty}
+                        onClick={deleteDuty}
                       />
                     </li>
                   );
