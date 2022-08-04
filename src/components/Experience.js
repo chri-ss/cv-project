@@ -107,6 +107,20 @@ const Experience = () => {
     );
   };
 
+  const addDuty = (e) => {
+    const index = parseInt(e.currentTarget.getAttribute("index"));
+    setCompanies(
+      companies.map((company, i) => {
+        if (i === index) {
+          return { ...company, duties: [...company.duties, ""] };
+        } else {
+          return { ...company, duties: [...company.duties] };
+        }
+      })
+    );
+    setAddingDuty(true);
+  };
+
   return (
     <div className="experience">
       <h2>Experience</h2>
@@ -121,7 +135,7 @@ const Experience = () => {
               handlechange={handleChange}
               handlesubmit={handleSubmit}
               addingduty={addingDuty}
-              // addDuty={addDuty}
+              addDuty={addDuty}
             />
           ) : (
             <li key={uniqid()} className="experience-list-item">

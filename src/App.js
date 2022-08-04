@@ -10,21 +10,6 @@ class App extends Component {
     super(props);
   }
 
-  addDuty = (e) => {
-    console.log(e.target);
-    const index = parseInt(e.currentTarget.getAttribute("index"));
-    this.setState({
-      companies: this.state.companies.map((company, i) => {
-        if (i === index) {
-          return { ...company, duties: [...company.duties, ""] };
-        } else {
-          return { ...company, duties: [...company.duties] };
-        }
-      }),
-      addingDuty: true,
-    });
-  };
-
   deleteDuty = (e) => {
     const index = parseInt(e.currentTarget.getAttribute("index"));
     const dutiesIndex = parseInt(e.currentTarget.getAttribute("dutiesindex"));
