@@ -34,6 +34,21 @@ const Education = () => {
     console.log(schools);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    setSchools(
+      schools.map((school) => {
+        if (school.editable) {
+          return { ...school, editable: false };
+        } else {
+          return { ...school };
+        }
+      })
+    );
+    setAddingSchool(false);
+  };
+
   return (
     <div className="education">
       <h2>Education</h2>
@@ -45,7 +60,7 @@ const Education = () => {
               school={school}
               index={index}
               // handlechange={handleSchoolChange}
-              // handlesubmit={handleSchoolSubmit}
+              handlesubmit={handleSubmit}
             />
           ) : (
             <li key={uniqid()} className="school-and-range">
@@ -73,22 +88,5 @@ const Education = () => {
     </div>
   );
 };
-
-// class Education extends Component {
-//   render() {
-//     const {
-//       schools,
-//       addingSchool,
-//       handleSchoolChange,
-//       handleSchoolSubmit,
-//       addSchoolForm,
-//       editInfo,
-//       deleteSchool,
-//     } = this.props;
-//     return (
-
-//     );
-//   }
-// }
 
 export default Education;

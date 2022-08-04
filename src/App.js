@@ -27,21 +27,6 @@ class App extends Component {
     };
   }
 
-  handleSchoolSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.target);
-    this.setState({
-      schools: this.state.schools.map((school) => {
-        if (school.editable) {
-          return { ...school, editable: false };
-        } else {
-          return { ...school };
-        }
-      }),
-      addingSchool: false,
-    });
-  };
-
   handleSchoolChange = (e) => {
     const id = e.target.id;
     console.log(e.target.value);
