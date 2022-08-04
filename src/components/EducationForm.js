@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 
-const EducationForm = () => {
-  const { institution, range } = this.props.school;
-  const { index, handlesubmit, handlechange } = this.props;
+const EducationForm = (props) => {
+  const { institution, range } = props.school;
+  const { index, handlesubmit, handlechange } = props;
   return (
     <form onSubmit={handlesubmit} className="education-form">
       <label htmlFor="school">School</label>

@@ -8,48 +8,7 @@ import "./styles/App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      companies: [
-        {
-          name: "cracker factory",
-          title: "middle manager",
-          range: "date - date",
-          duties: ["salting", "managing", "getting fired"],
-          editable: false,
-        },
-      ],
-      addingCompany: false,
-      addingDuty: false,
-    };
   }
-
-  editExperienceInfo = (e) => {
-    console.log(e.target);
-    this.setState({
-      companies: this.state.companies
-        .filter((company) => {
-          if (this.state.addingCompany) {
-            return (
-              company !== this.state.companies[this.state.companies.length - 1]
-            );
-          } else {
-            return company;
-          }
-        })
-        .map((company) => {
-          if (
-            this.state.companies.indexOf(company) ===
-            parseInt(e.currentTarget.getAttribute("index"))
-          ) {
-            return { ...company, editable: true };
-          } else {
-            return { ...company, editable: false };
-          }
-        }),
-      addingCompany: false,
-    });
-  };
 
   handleCompanySubmit = (e) => {
     e.preventDefault();
@@ -166,26 +125,18 @@ class App extends Component {
     return (
       <div>
         <General />
-        <Education
-        // schools={this.state.schools}
-        // addingSchool={this.state.addingSchool}
-        // editInfo={this.editSchoolInfo}
-        // handleSchoolChange={this.handleSchoolChange}
-        // handleSchoolSubmit={this.handleSchoolSubmit}
-        // addSchoolForm={this.addSchoolForm}
-        // deleteSchool={this.deleteSchool}
-        />
+        <Education />
         <Experience
-          companies={this.state.companies}
-          addingCompany={this.state.addingCompany}
-          addingDuty={this.state.addingDuty}
-          editInfo={this.editExperienceInfo}
-          handleCompanyChange={this.handleCompanyChange}
-          handleCompanySubmit={this.handleCompanySubmit}
-          addCompanyForm={this.addCompanyForm}
-          addDuty={this.addDuty}
-          deleteDuty={this.deleteDuty}
-          deleteCompany={this.deleteCompany}
+        // companies={this.state.companies}
+        // addingCompany={this.state.addingCompany}
+        // addingDuty={this.state.addingDuty}
+        // editInfo={this.editExperienceInfo}
+        // handleCompanyChange={this.handleCompanyChange}
+        // handleCompanySubmit={this.handleCompanySubmit}
+        // addCompanyForm={this.addCompanyForm}
+        // addDuty={this.addDuty}
+        // deleteDuty={this.deleteDuty}
+        // deleteCompany={this.deleteCompany}
         />
       </div>
     );
