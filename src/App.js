@@ -10,53 +10,6 @@ class App extends Component {
     super(props);
   }
 
-  handleCompanySubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state.companies);
-    this.setState({
-      companies: this.state.companies.map((company) => {
-        if (company.editable) {
-          return { ...company, editable: false };
-        } else {
-          return { ...company };
-        }
-      }),
-      addingCompany: false,
-      addingDuty: false,
-    });
-    console.log(this.state.companies);
-  };
-
-  handleCompanyChange = (e) => {
-    const id = e.target.id;
-    const index = parseInt(e.target.getAttribute("index"));
-    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
-    this.setState({
-      companies: this.state.companies.map((company) => {
-        if (
-          this.state.companies.indexOf(company) === index &&
-          id === "duties"
-        ) {
-          return {
-            ...company,
-            [id]: this.state.companies[index].duties.map((duty, i) => {
-              if (i === dutiesIndex) {
-                return (duty = e.target.value);
-              } else {
-                return duty;
-              }
-            }),
-          };
-        } else if (this.state.companies.indexOf(company) === index) {
-          return { ...company, [id]: e.target.value };
-        } else {
-          return { ...company };
-        }
-      }),
-    });
-    console.log(e.target.getAttribute("dutiesindex"));
-  };
-
   addCompanyForm = () => {
     this.setState({
       addingCompany: true,

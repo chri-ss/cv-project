@@ -40,6 +40,33 @@ const Experience = () => {
     setAddingCompany(false);
   };
 
+  const handleChange = (e) => {
+    const id = e.target.id;
+    const index = parseInt(e.target.getAttribute("index"));
+    const dutiesIndex = parseInt(e.target.getAttribute("dutiesindex"));
+    setCompanies(
+      companies.map((company, i) => {
+        if (i === index && id === "duties") {
+          return {
+            ...company,
+            [id]: companies[index].duties.map((duty, j) => {
+              if (j === dutiesIndex) {
+                return (duty = e.target.value);
+              } else {
+                return duty;
+              }
+            }),
+          };
+        } else if (i === index) {
+          return { ...company, [id]: e.target.value };
+        } else {
+          return { ...company };
+        }
+      })
+    );
+    console.log(e.target.getAttribute("dutiesindex"));
+  };
+
   return (
     <div className="experience">
       <h2>Experience</h2>
@@ -51,7 +78,7 @@ const Experience = () => {
             <ExperienceForm
               company={company}
               index={index}
-              // handlechange={handleCompanyChange}
+              handlechange={handleChange}
               // handlesubmit={handleCompanySubmit}
               // addingduty={addingDuty}
               // addDuty={addDuty}
