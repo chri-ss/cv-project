@@ -64,7 +64,21 @@ const Experience = () => {
         }
       })
     );
-    console.log(e.target.getAttribute("dutiesindex"));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCompanies(
+      companies.map((company) => {
+        if (company.editable) {
+          return { ...company, editable: false };
+        } else {
+          return { ...company };
+        }
+      })
+    );
+    setAddingCompany(false);
+    setAddingDuty(false);
   };
 
   return (
@@ -79,7 +93,7 @@ const Experience = () => {
               company={company}
               index={index}
               handlechange={handleChange}
-              // handlesubmit={handleCompanySubmit}
+              handlesubmit={handleSubmit}
               // addingduty={addingDuty}
               // addDuty={addDuty}
             />
