@@ -81,6 +81,26 @@ const Experience = () => {
     setAddingDuty(false);
   };
 
+  const addCompanyForm = () => {
+    setAddingCompany(true);
+    setCompanies(
+      // addingCompany: true,
+      [
+        ...companies.map((company) => {
+          return { ...company, editable: false };
+        }),
+        {
+          name: "",
+          title: "",
+          range: "",
+          duties: [],
+          editable: true,
+        },
+      ]
+    );
+    console.log(this.state.addingCompany);
+  };
+
   return (
     <div className="experience">
       <h2>Experience</h2>
@@ -140,7 +160,9 @@ const Experience = () => {
           );
         })}
       </ul>
-      {!addingCompany ? <GoDiffAdded size="2em" className="add-icon" /> : null}
+      {!addingCompany ? (
+        <GoDiffAdded size="2em" className="add-icon" onClick={addCompanyForm} />
+      ) : null}
     </div>
   );
 };

@@ -10,25 +10,6 @@ class App extends Component {
     super(props);
   }
 
-  addCompanyForm = () => {
-    this.setState({
-      addingCompany: true,
-      companies: [
-        ...this.state.companies.map((company) => {
-          return { ...company, editable: false };
-        }),
-        {
-          name: "",
-          title: "",
-          range: "",
-          duties: [],
-          editable: true,
-        },
-      ],
-    });
-    console.log(this.state.addingCompany);
-  };
-
   deleteCompany = (e) => {
     this.setState({
       companies: this.state.companies.filter(
