@@ -10,16 +10,6 @@ class App extends Component {
     super(props);
   }
 
-  deleteCompany = (e) => {
-    this.setState({
-      companies: this.state.companies.filter(
-        (company) =>
-          company !==
-          this.state.companies[parseInt(e.currentTarget.getAttribute("index"))]
-      ),
-    });
-  };
-
   addDuty = (e) => {
     console.log(e.target);
     const index = parseInt(e.currentTarget.getAttribute("index"));

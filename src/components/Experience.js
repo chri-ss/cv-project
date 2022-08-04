@@ -83,22 +83,28 @@ const Experience = () => {
 
   const addCompanyForm = () => {
     setAddingCompany(true);
-    setCompanies(
-      // addingCompany: true,
-      [
-        ...companies.map((company) => {
-          return { ...company, editable: false };
-        }),
-        {
-          name: "",
-          title: "",
-          range: "",
-          duties: [],
-          editable: true,
-        },
-      ]
-    );
+    setCompanies([
+      ...companies.map((company) => {
+        return { ...company, editable: false };
+      }),
+      {
+        name: "",
+        title: "",
+        range: "",
+        duties: [],
+        editable: true,
+      },
+    ]);
     console.log(this.state.addingCompany);
+  };
+
+  const deleteCompany = (e) => {
+    setCompanies(
+      companies.filter(
+        (company) =>
+          company !== companies[parseInt(e.currentTarget.getAttribute("index"))]
+      )
+    );
   };
 
   return (
@@ -114,7 +120,7 @@ const Experience = () => {
               index={index}
               handlechange={handleChange}
               handlesubmit={handleSubmit}
-              // addingduty={addingDuty}
+              addingduty={addingDuty}
               // addDuty={addDuty}
             />
           ) : (
@@ -153,7 +159,7 @@ const Experience = () => {
                   index={index}
                   size="1.5em"
                   className="delete-icon"
-                  // onClick={deleteCompany}
+                  onClick={deleteCompany}
                 />
               </div>
             </li>
