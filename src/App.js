@@ -24,47 +24,6 @@ class App extends Component {
     };
   }
 
-  handleSchoolChange = (e) => {
-    const id = e.target.id;
-    console.log(e.target.value);
-    this.setState({
-      schools: this.state.schools.map((school) => {
-        if (
-          this.state.schools.indexOf(school) ===
-          parseInt(e.target.getAttribute("index"))
-        ) {
-          return { ...school, [id]: e.target.value };
-        } else {
-          return { ...school };
-        }
-      }),
-    });
-    console.log(this.state);
-  };
-
-  addSchoolForm = () => {
-    this.setState({
-      addingSchool: true,
-      schools: [
-        ...this.state.schools.map((school) => {
-          return { ...school, editable: false };
-        }),
-        { institution: "", range: "", editable: true },
-      ],
-    });
-    console.log(this.state);
-  };
-
-  deleteSchool = (e) => {
-    this.setState({
-      schools: this.state.schools.filter(
-        (school) =>
-          school !==
-          this.state.schools[parseInt(e.currentTarget.getAttribute("index"))]
-      ),
-    });
-  };
-
   editExperienceInfo = (e) => {
     console.log(e.target);
     this.setState({

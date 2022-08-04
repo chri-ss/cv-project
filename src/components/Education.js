@@ -72,6 +72,15 @@ const Education = () => {
     console.log(this.state);
   };
 
+  const deleteSchool = (e) => {
+    setSchools(
+      schools.filter(
+        (school) =>
+          school !== schools[parseInt(e.currentTarget.getAttribute("index"))]
+      )
+    );
+  };
+
   return (
     <div className="education">
       <h2>Education</h2>
@@ -101,7 +110,7 @@ const Education = () => {
                 index={index}
                 className="delete-icon"
                 size="1.5em"
-                // onClick={deleteSchool}
+                onClick={deleteSchool}
               />
             </li>
           );
