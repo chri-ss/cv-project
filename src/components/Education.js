@@ -36,7 +36,6 @@ const Education = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
     setSchools(
       schools.map((school) => {
         if (school.editable) {
@@ -49,6 +48,19 @@ const Education = () => {
     setAddingSchool(false);
   };
 
+  const handleChange = (e) => {
+    const id = e.target.id;
+    setSchools(
+      schools.map((school, i) => {
+        if (i === parseInt(e.target.getAttribute("index"))) {
+          return { ...school, [id]: e.target.value };
+        } else {
+          return { ...school };
+        }
+      })
+    );
+  };
+
   return (
     <div className="education">
       <h2>Education</h2>
@@ -59,7 +71,7 @@ const Education = () => {
             <EducationForm
               school={school}
               index={index}
-              // handlechange={handleSchoolChange}
+              handlechange={handleChange}
               handlesubmit={handleSubmit}
             />
           ) : (

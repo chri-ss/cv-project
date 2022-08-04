@@ -10,9 +10,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      // schools: [
-      // { institution: "some school", range: "date - date", editable: false },
-      // ],
       companies: [
         {
           name: "cracker factory",
