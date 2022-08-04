@@ -61,6 +61,17 @@ const Education = () => {
     );
   };
 
+  const addSchoolForm = () => {
+    setAddingSchool(true);
+    setSchools([
+      ...schools.map((school) => {
+        return { ...school, editable: false };
+      }),
+      { institution: "", range: "", editable: true },
+    ]);
+    console.log(this.state);
+  };
+
   return (
     <div className="education">
       <h2>Education</h2>
@@ -96,7 +107,9 @@ const Education = () => {
           );
         })}
       </ul>
-      {!addingSchool ? <GoDiffAdded size="2em" className="add-icon" /> : null}
+      {!addingSchool ? (
+        <GoDiffAdded size="2em" className="add-icon" onClick={addSchoolForm} />
+      ) : null}
     </div>
   );
 };
