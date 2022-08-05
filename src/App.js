@@ -5,16 +5,14 @@ import Experience from "./components/Experience";
 import "./styles/reset.css";
 import "./styles/App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <General />
-        <Education />
-        <Experience />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <General />
+      <Education />
+      <Experience />
+    </div>
+  );
+};
 
 export default App;
