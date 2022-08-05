@@ -206,24 +206,4 @@ const Experience = () => {
   );
 };
 
-// class Experience extends Component {
-//   render() {
-//     const {
-//       companies,
-//       addingCompany,
-//       addingDuty,
-//       editInfo,
-//       addCompanyForm,
-//       deleteCompany,
-//       addDuty,
-//       deleteDuty,
-//       handleCompanyChange,
-//       handleCompanySubmit,
-//     } = this.props;
-//     return (
-
-//     );
-//   }
-// }
-
 export default Experience;
